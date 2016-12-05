@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @edb.note %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @edb.distance %>
+</p>
+
+<%= link_to 'Edit', edit_edb_path(@edb) %> |
+<%= link_to 'Back', edbs_path %>

@@ -1,0 +1,1 @@
+json.array! @edbs, partial: 'edbs/edb', as: :edb

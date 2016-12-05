@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205123441) do
+ActiveRecord::Schema.define(version: 20161205134043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beacons", force: :cascade do |t|
+    t.string   "ID"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.string   "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "edbs", force: :cascade do |t|
+    t.string   "note"
+    t.integer  "distance"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "document_id"
+    t.integer  "beacon_id"
+  end
+
+  add_index "edbs", ["beacon_id"], name: "index_edbs_on_beacon_id", using: :btree
+  add_index "edbs", ["document_id"], name: "index_edbs_on_document_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "welcome_msg"
@@ -60,4 +87,6 @@ ActiveRecord::Schema.define(version: 20161205123441) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "edbs", "beacons"
+  add_foreign_key "edbs", "documents"
 end
