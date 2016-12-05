@@ -69,6 +69,6 @@ class EdbsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def edb_params
-      params.require(:edb).permit(:note, :distance)
+      params.require(:edb).permit(:note, :distance, :document_id, :beacon_id, event_id)
     end
 end

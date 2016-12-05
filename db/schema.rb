@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205134043) do
+ActiveRecord::Schema.define(version: 20161205141844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beacons", force: :cascade do |t|
-    t.string   "ID"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "name"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 20161205134043) do
     t.datetime "updated_at",  null: false
     t.integer  "document_id"
     t.integer  "beacon_id"
+    t.integer  "event_id"
   end
 
   add_index "edbs", ["beacon_id"], name: "index_edbs_on_beacon_id", using: :btree
   add_index "edbs", ["document_id"], name: "index_edbs_on_document_id", using: :btree
+  add_index "edbs", ["event_id"], name: "index_edbs_on_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "welcome_msg"
@@ -89,4 +91,5 @@ ActiveRecord::Schema.define(version: 20161205134043) do
 
   add_foreign_key "edbs", "beacons"
   add_foreign_key "edbs", "documents"
+  add_foreign_key "edbs", "events"
 end

@@ -14,7 +14,7 @@
   <tbody>
     <% @beacons.each do |beacon| %>
       <tr>
-        <td><%= beacon.id %></td>
+        <td><%= beacon.name %></td>
         <td><%= beacon.description %></td>
         <td><%= link_to 'Show', beacon %></td>
         <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>

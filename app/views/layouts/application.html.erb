@@ -9,6 +9,17 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+
+
+<div class="container">
+  <ul class="nav nav-tabs">
+
+    <%= link_to "Events", root_path %>
+    <%= link_to "Documents", documents_path %>
+    <%= link_to "Beacons", beacons_path %>
+    <%= link_to "EDB", edbs_path %>
+  </ul>
 <%= yield %>
 
 </body>

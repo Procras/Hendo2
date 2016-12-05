@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <div class="control-group">
+    <%=f.label :event_id, class: 'control.label' %>
+    <div class="controls">
+      <%= collection_select( :edb, :event_id, Beacon.all, :id, :name, {}, { :multiple => false }) %>
+    </div>
+  </div>
   <div class="field">
     <%= f.label :note %><br>
     <%= f.text_field :note %>
@@ -18,6 +24,18 @@
   <div class="field">
     <%= f.label :distance %><br>
     <%= f.number_field :distance %>
+  </div>
+  <div class="control-group">
+    <%=f.label :document_id, class: 'control.label' %>
+    <div class="controls">
+      <%= collection_select( :edb, :document_id, Document.all, :id, :name, {}, { :multiple => false }) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%=f.label :beacon_id, class: 'control.label' %>
+    <div class="controls">
+      <%= collection_select( :edb, :beacon_id, Beacon.all, :id, :name, {}, { :multiple => false }) %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
