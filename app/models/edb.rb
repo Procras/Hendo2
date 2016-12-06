@@ -1,5 +1,6 @@
 class Edb < ActiveRecord::Base
-  has_many :documents
-  has_many :beacons
-  has_many :events
+  belongs_to :document
+  belongs_to :beacon
+  belongs_to :event
+  has_many :edbguests
 end

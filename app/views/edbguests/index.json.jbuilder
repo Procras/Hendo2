@@ -1,0 +1,1 @@
+json.array! @edbguests, partial: 'edbguests/edbguest', as: :edbguest

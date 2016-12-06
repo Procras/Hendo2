@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Logo:</strong>
+  <%= image_tag @edb.event.image.url(:thumb) %>
+</p>
+
+<p>
   <strong>Note:</strong>
   <%= @edb.note %>
 </p>
@@ -8,6 +13,21 @@
 <p>
   <strong>Distance:</strong>
   <%= @edb.distance %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @edb.event.name %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @edb.document.name %>
+</p>
+
+<p>
+  <strong>Beacon:</strong>
+  <%= @edb.beacon.name %>
 </p>
 
 <%= link_to 'Edit', edit_edb_path(@edb) %> |

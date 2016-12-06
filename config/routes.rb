@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :edbguests
+  resources :guests
   resources :edbs
   resources :beacons
   resources :documents

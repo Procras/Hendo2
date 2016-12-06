@@ -1,3 +1,3 @@
 class Beacon < ActiveRecord::Base
-  belongs_to :edb
+  has_many :edbs
 end

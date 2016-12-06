@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205141844) do
+ActiveRecord::Schema.define(version: 20161206154907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,25 @@ ActiveRecord::Schema.define(version: 20161205141844) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "edbguests", force: :cascade do |t|
+    t.string   "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "edb_id"
+    t.integer  "guest_id"
+  end
+
+  add_index "edbguests", ["edb_id"], name: "index_edbguests_on_edb_id", using: :btree
+  add_index "edbguests", ["guest_id"], name: "index_edbguests_on_guest_id", using: :btree
+
   create_table "edbs", force: :cascade do |t|
     t.string   "note"
     t.integer  "distance"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "document_id"
-    t.integer  "beacon_id"
     t.integer  "event_id"
+    t.integer  "beacon_id"
   end
 
   add_index "edbs", ["beacon_id"], name: "index_edbs_on_beacon_id", using: :btree
@@ -62,6 +73,14 @@ ActiveRecord::Schema.define(version: 20161205141844) do
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -89,7 +108,4 @@ ActiveRecord::Schema.define(version: 20161205141844) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "edbs", "beacons"
-  add_foreign_key "edbs", "documents"
-  add_foreign_key "edbs", "events"
 end
