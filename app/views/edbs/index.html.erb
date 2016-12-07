@@ -1,35 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Edbs</h1>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Document</th>
+          <th>Beacon</th>
+          <th>Event</th>
+          <th>Note</th>
+          <th>Distance</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Document</th>
-      <th>Beacon</th>
-      <th>Event</th>
-      <th>Note</th>
-      <th>Distance</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @edbs.each do |edb| %>
-      <tr>
-        <td><%= edb.document.name %></td>
-        <td><%= edb.beacon.name %></td>
-        <td><%= edb.event.name %></td>
-        <td><%= edb.note %></td>
-        <td><%= edb.distance %></td>
-        <td><%= link_to 'Show', edb %></td>
-        <td><%= link_to 'Edit', edit_edb_path(edb) %></td>
-        <td><%= link_to 'Destroy', edb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @edbs.each do |edb| %>
+          <tr>
+            <td><%= edb.document.name %></td>
+            <td><%= edb.beacon.name %></td>
+            <td><%= edb.event.name %></td>
+            <td><%= edb.note %></td>
+            <td><%= edb.distance %></td>
+            <td><%= link_to 'Show', edb, class: 'btn btn-mini' %></td>
+            <td><%= link_to 'Edit', edit_edb_path(edb), class: 'btn btn-mini btn-success' %></td>
+            <td><%= link_to 'Destroy', edb, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'New Edb', new_edb_path %>
+<%= link_to 'New Edb', new_edb_path, class: 'btn btn-mini' %>

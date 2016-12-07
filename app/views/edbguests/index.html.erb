@@ -1,31 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Edbguests</h1>
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Note</th>
+          <th>Guest</th>
+          <th>Edb</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Note</th>
-      <th>Guest</th>
-      <th>Edb</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @edbguests.each do |edbguest| %>
-      <tr>
-        <td><%= edbguest.note %></td>
-        <td><%= edbguest.guest.id %></td>
-        <td><%= edbguest.edb.id %></td>
-        <td><%= link_to 'Show', edbguest %></td>
-        <td><%= link_to 'Edit', edit_edbguest_path(edbguest) %></td>
-        <td><%= link_to 'Destroy', edbguest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @edbguests.each do |edbguest| %>
+          <tr>
+            <td><%= edbguest.note %></td>
+            <td><%= edbguest.guest.id %></td>
+            <td><%= edbguest.edb.id %></td>
+            <td><%= link_to 'Show', edbguest, class: 'btn btn-mini' %></td>
+            <td><%= link_to 'Edit', edit_edbguest_path(edbguest), class: 'btn btn-mini btn-success' %></td>
+            <td><%= link_to 'Destroy', edbguest, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'New Edbguest', new_edbguest_path %>
+<%= link_to 'Create Edbguest', new_edbguest_path, class: 'btn btn-mini' %>
